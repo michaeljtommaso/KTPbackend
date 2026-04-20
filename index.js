@@ -57,7 +57,7 @@ app.get('/api/projects', (req, res) => {
 });
 
 app.post('/api/projects', (req, res) => {
-  const { title, description, tech } = req.body;
+  const { title, description, tech, link } = req.body;
   if (!title || !description) {
     return res.status(400).json({ error: 'title and description are required' });
   }
@@ -65,7 +65,8 @@ app.post('/api/projects', (req, res) => {
     id: projects.length + 1,
     title,
     description,
-    tech: tech || []
+    tech: tech || [],
+    link
   };
   projects.push(newProject);
   res.status(201).json(newProject);
